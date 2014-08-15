@@ -1911,7 +1911,7 @@ module Mail
     # Returns true if this part is an attachment,
     # false otherwise.
     def attachment?
-      !!find_attachment
+      header[:content_disposition].to_s.downcase == "attachment" or !!find_attachment
     end
 
     # Returns the attachment data if there is any
